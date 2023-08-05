@@ -16,10 +16,10 @@ class CurpStoreRequest extends FormRequest
 
     public function rules()
     {
-         $listaDeEstados = ['AS','BC','BS','CC','CS','CH','DF','CL','CM','DG','GT','GR','HG','JC','MC','MN','MS','NT','NL','OC','PL','QO','QR','SP','SL','SR','TC','TS','TL','VZ','YN','ZS'];
+        $listaDeEstados = ['AS', 'BC', 'BS', 'CC', 'CS', 'CH', 'DF', 'CL', 'CM', 'DG', 'GT', 'GR', 'HG', 'JC', 'MC', 'MN', 'MS', 'NT', 'NL', 'OC', 'PL', 'QO', 'QR', 'SP', 'SL', 'SR', 'TC', 'TS', 'TL', 'VZ', 'YN', 'ZS'];
 
         return [
-            
+
             'nombre' => 'required',
             'apellido_p' => 'required',
             'apellido_m' => 'required',
@@ -30,21 +30,21 @@ class CurpStoreRequest extends FormRequest
             'estado' => [
                 'required', Rule::in($listaDeEstados),
             ],
-            'curp' => ['required','unique:curps',new CurpValidationRule]
+            'curp' => ['required', 'unique:curps', new CurpValidationRule]
         ];
-        
+
     }
-    
-    
-    
+
+
+
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
 
             'success' => false,
-            'errors' => $validator->errors()
+            'errors' => $validator->errors(),
 
-        ]));
+        ])->setStatusCode(406));
 
     }
 
