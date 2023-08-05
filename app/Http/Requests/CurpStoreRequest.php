@@ -30,7 +30,7 @@ class CurpStoreRequest extends FormRequest
             'estado' => [
                 'required', Rule::in($listaDeEstados),
             ],
-            'curp' => ['required',new CurpValidationRule]
+            'curp' => ['required','unique:curps',new CurpValidationRule]
         ];
         
     }
@@ -64,6 +64,7 @@ class CurpStoreRequest extends FormRequest
             'estado.required' => 'El Estado es obligatorio',
             'estado.*' => 'Abreviatura de estado invalido, ej. Hidalgo es HG',
             'curp.required' => 'El Curp es obligatorio',
+            'curp.unique' => 'El Curp ya se ecuentra registrado',
         ];
 
     }
