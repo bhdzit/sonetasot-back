@@ -1,0 +1,23 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Usuarios",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/getAllCURPS": {
+            "get": {
+                "summary": "Muestra todos los Curps registrados ",
+                "operationId": "c076cbf42fcdafcd045df674fb9e3847",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todos los Curps registrados."
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    }
+}
