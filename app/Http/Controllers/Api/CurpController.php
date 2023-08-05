@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CurpStoreRequest;
 use App\Models\Curp;
+use Illuminate\Http\Request;
 
 
 
@@ -171,8 +172,35 @@ class CurpController extends Controller
 
     public function update(CurpStoreRequest $request)
     {
-        $curp=Curp::where('curp', $request->curp)->update($request->all());
-        $curp=Curp::where('curp', $request->curp)->get();
+        $curp = Curp::where('curp', $request->curp)->update($request->all());
+        $curp = Curp::where('curp', $request->curp)->get();
         return $curp;
     }
+
+    /**
+     * @OA\get(
+     *     path="/api/getCurp/{curp}",
+     *     summary="Updates a user",
+     *     @OA\Parameter(
+     *         description="Obtiene datos de la persona al que tiene asociado un curp",
+     *         in="path",
+     *         name="curp",
+     *         required=true,
+     *         @OA\Schema(type="string"),
+     *         @OA\Examples(example="HEMB970904HHGRRR00", value="HEMB970904HHGRRR00", summary="Curp de la persona")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK"
+     *     )
+     * )
+     */
+
+    public function getCurp(Request $request)
+    {
+        $curp = Curp::where('curp', $request->curp)->get();
+        return $curp;
+    }
+
+
 }

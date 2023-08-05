@@ -138,6 +138,34 @@
                     }
                 }
             }
+        },
+        "/api/getCurp/{curp}": {
+            "get": {
+                "summary": "Updates a user",
+                "operationId": "fe82ae69f2ca996127a704b1e33d3210",
+                "parameters": [
+                    {
+                        "name": "curp",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "HEMB970904HHGRRR00": {
+                                "summary": "Curp de la persona",
+                                "value": "HEMB970904HHGRRR00"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
         }
     }
 }
