@@ -76,6 +76,68 @@
                     }
                 }
             }
+        },
+        "/api/updateCurp": {
+            "put": {
+                "summary": "Actualiza los datos del Crup",
+                "operationId": "6617d2ba3ffc8a351f07a14de79d81ce",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "apellido_p": {
+                                        "type": "string"
+                                    },
+                                    "apellido_m": {
+                                        "type": "string"
+                                    },
+                                    "fecha_nacimiento": {
+                                        "type": "string"
+                                    },
+                                    "sexo": {
+                                        "type": "string"
+                                    },
+                                    "estado": {
+                                        "type": "string"
+                                    },
+                                    "curp": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": 1,
+                                    "nombre": "Bryan Eliud",
+                                    "apellido_p": "Hernandez",
+                                    "apellido_m": "Moran",
+                                    "fecha_nacimiento": "1997-09-04",
+                                    "sexo": "H",
+                                    "estado": "HG",
+                                    "curp": "HEMB970904HHGRRR00"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "El Curp se agrego con exito."
+                    },
+                    "406": {
+                        "description": "El request es invalido"
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
         }
     }
 }

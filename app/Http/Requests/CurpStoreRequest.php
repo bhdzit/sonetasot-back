@@ -30,7 +30,7 @@ class CurpStoreRequest extends FormRequest
             'estado' => [
                 'required', Rule::in($listaDeEstados),
             ],
-            'curp' => ['required', 'unique:curps', new CurpValidationRule]
+            'curp' => ['required', Rule::unique('curps', 'curp')->ignore($this->id, 'id'), new CurpValidationRule]
         ];
 
     }

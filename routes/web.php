@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/api/getAllCURPS',[CurpController::class,"index"]);
 Route::post('/api/createCurp',[CurpController::class,"create"]);
+Route::put('/api/updateCurp',[CurpController::class,"update"]);
