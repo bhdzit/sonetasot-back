@@ -180,7 +180,7 @@ class CurpController extends Controller
     /**
      * @OA\get(
      *     path="/api/getCurp/{curp}",
-     *     summary="Updates a user",
+     *     summary="Obtiene datos de la persona al que tiene asociado un curp",
      *     @OA\Parameter(
      *         description="Obtiene datos de la persona al que tiene asociado un curp",
      *         in="path",
@@ -200,6 +200,38 @@ class CurpController extends Controller
     {
         $curp = Curp::where('curp', $request->curp)->get();
         return $curp;
+    }
+
+    /**
+     * @OA\delete(
+     *     path="/api/deleteCurp/{curp}",
+     *     summary="Updates a user",
+     *     @OA\Parameter(
+     *         description="Elimina el curp",
+     *         in="path",
+     *         name="curp",
+     *         required=true,
+     *         @OA\Schema(type="string"),
+     *         @OA\Examples(example="HEMB970904HHGRRR00", value="HEMB970904HHGRRR00", summary="Curp de la persona")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK"
+     *     )
+     * )
+     */
+
+    public function deleteCurp(Request $request)
+    {
+
+        $curp = Curp::where('curp', $request->curp)->get();
+        if (count($curp) > 0) {
+            $curp = $curp[0];
+            $curp = Curp::find($curp->id);
+            $curp->delete();
+            return "{msg:'Registro $request->curp  se eliminado con exito'}";
+        }
+        return "{msg:'Registro no exite'}";
     }
 
 

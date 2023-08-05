@@ -141,13 +141,41 @@
         },
         "/api/getCurp/{curp}": {
             "get": {
-                "summary": "Updates a user",
+                "summary": "Obtiene datos de la persona al que tiene asociado un curp",
                 "operationId": "fe82ae69f2ca996127a704b1e33d3210",
                 "parameters": [
                     {
                         "name": "curp",
                         "in": "path",
-                        "description": "Parameter with mutliple examples",
+                        "description": "Obtiene datos de la persona al que tiene asociado un curp",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "HEMB970904HHGRRR00": {
+                                "summary": "Curp de la persona",
+                                "value": "HEMB970904HHGRRR00"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/deleteCurp/{curp}": {
+            "delete": {
+                "summary": "Updates a user",
+                "operationId": "40e2400087d52384d80e2e86a0b1b1d4",
+                "parameters": [
+                    {
+                        "name": "curp",
+                        "in": "path",
+                        "description": "Elimina el curp",
                         "required": true,
                         "schema": {
                             "type": "string"
