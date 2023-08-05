@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('fecha_nacimiento');
             $table->string('sexo');
             $table->string('estado');
+            $table->string('curp');
             $table->timestamps();
         });
     }
