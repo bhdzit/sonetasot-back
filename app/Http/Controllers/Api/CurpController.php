@@ -9,9 +9,9 @@ use App\Models\Curp;
 
 
 /**
-* @OA\Info(title="API Usuarios", version="1.0")
-*
-*/
+ * @OA\Info(title="API Usuarios", version="1.0")
+ *
+ */
 class CurpController extends Controller
 {
     /**
@@ -32,10 +32,73 @@ class CurpController extends Controller
     {
         return Curp::all();
     }
-    
+
+    /**
+     * @OA\post(
+     *     path="/api/createCurp",
+     *     summary="Agrega Crups",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="nombre",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="apellido_p",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="apellido_m",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="fecha_nacimiento",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="sexo",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="estado",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="curp",
+     *                     type="string"
+     *                 ),
+     *                 example={
+     *               "nombre":"Bryan Eliut",
+     *               "apellido_p":"Hernandez",
+     *               "apellido_m":"Moran",
+     *               "fecha_nacimiento":"1997-09-04",
+     *               "sexo":"H",
+     *               "estado":"HG",
+     *               "curp":"HEMB970904HHGRRR00"
+     *               }
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="El Curp se agrego con exito."
+     *     ),
+     *     @OA\Response(
+     *         response=406,
+     *         description="El request es invalido"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Ha ocurrido un error."
+     *     ),
+     * )
+     */
+
     public function create(CurpStoreRequest $request)
     {
-       $curp = Curp::create($request.array());
-       return $curp;
+        $curp = Curp::create($request->toArray());
+        return $curp;
     }
 }
