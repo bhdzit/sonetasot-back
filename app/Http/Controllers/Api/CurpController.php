@@ -157,7 +157,7 @@ class CurpController extends Controller
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="El Curp se agrego con exito."
+     *         description="El Curp se Actualizo con exito."
      *     ),
      *     @OA\Response(
      *         response=406,
